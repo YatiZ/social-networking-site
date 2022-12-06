@@ -1,0 +1,15 @@
+{% extends 'page.html' %} 
+{% block content %} 
+
+<h1>This is {{user_profile.user}} profile</h1>
+<form class="form-control">
+    <div class="inner-form">
+<img src="{{user_profile.image.url}}" class="image">
+<h4>{{user_profile.user}}</h4><hr>
+<p>Bio: {{user_profile.bio}}</p>
+<p>Birthday Date: {{user_profile.birthday_date}}</p>
+<p>Gender: {{user_profile.gender}}</p>
+<!-- <p>Lives in: {{user_profile.location}}</p> -->
+</div>
+</form>
+{% endblock %}

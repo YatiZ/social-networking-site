@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/9dca7ae98e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'page.css' %}">
+    <title>Document</title>
+    <link rel="website icon"  type="jpeg" href="{% static 'yati.jpeg' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid justify-content-between">
+      
+      <div class="d-flex">
+      
+        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+          <img
+            src="{% static 'text.jpg' %}"
+            alt="MDB Logo"
+            loading="lazy"
+            style="margin-top: 2px;width: 50px;height: 40px;"
+          />
+
+        </a>
+  
+        <!-- Search form -->
+        <form class="input-group w-auto my-auto d-none d-sm-flex" action="{% url 'search' %}" method="POST">
+          {% csrf_token %}
+          <input
+            autocomplete="off"
+            type="search"
+            class="form-control rounded"
+            placeholder="Search...."
+            style="min-width: 125px;"
+            name="searched_user"
+          />
+        <button style="margin-top: 0;background-color: whitesmoke;border: 5px whitesmoke;" type="submit">
+          <i class="fas fa-search"></i>
+          <!-- <img src="{% static 'search.png' %}" width="60px" height="30px"> -->
+        </button>
+        </form>
+      </div>
+      <!-- Left elements -->
+  
+      <!-- Center elements -->
+      <ul class="navbar-nav flex-row d-none d-md-flex">
+        <li class="nav-item me-3 me-lg-1 active">
+          <a class="nav-link" href="{% url 'page' %}">
+            <span><i class="fas fa-home fa-lg"></i></span>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'change-password' %}">
+            <span><i class="fa-solid fa-gear" style="font-size: 18px;"></i></i></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'music' %}">
+            <span><i class="fas fa-video fa-lg"></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'profile' %}">
+            <span><i class="fas fa-shopping-bag fa-lg"></i></span>
+          </a>
+        </li>
+  
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'users' user.username %}">
+            <span><i class="fas fa-users fa-lg"></i></span>
+            <span class="badge rounded-pill badge-notification bg-danger">2</span>
+          </a>
+        </li>
+      </ul>
+      <!-- Center elements -->
+  
+      <!-- Right elements -->
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link d-sm-flex align-items-sm-center" href="{% url 'dashboard' user.username %}">
+            <img
+              src="https://bit.ly/3CQgOlu"
+              class="rounded-circle"
+              height="22"
+              alt="Black and White Portrait of a Man"
+              loading="lazy"
+            />
+            <strong class="d-none d-sm-block ms-1">{{user.username}}</strong>
+          </a>
+        </li>
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'addpost' %}">
+            <span><i class="fas fa-plus-circle fa-lg"></i></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-comments fa-lg"></i>
+  
+            <span class="badge rounded-pill badge-notification bg-danger">6</span>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown me-3 me-lg-1">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-mdb-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="fas fa-bell fa-lg"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">12</span>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{% url 'logout' %}">
+            <span><i class="fa-regular fa-right-from-bracket"></i></span>
+          </a>
+        </li>
+      </ul>
+      <!-- Right elements -->
+    </div>
+  </nav>
+  <!-- Newfeeds -->
+{%block content %} 
+
+<style>
+  .newfeeds{
+    margin-top: 50px;
+  }
+  
+  a{
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+    .container{
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1;
+    
+    justify-content: center;
+  }
+  .cardA{
+    position: relative;
+    margin-top: 2rem;
+    color: black;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    height: 30rem;
+    width:50rem ;
+  }
+  .cardA img{
+    width: 27rem;
+    border-radius: 20px;
+  }
+  .cardB{
+    position: relative;
+    margin-top: 2rem;
+    
+    color: black;
+    box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    height: 10rem;
+    width:50rem ;
+  }
+  @media (min-width:991px){
+    .cardA{
+      position: relative;
+      width: 80rem;
+      max-width: 800px;
+      padding-left: 1.7rem;
+      height: 35rem;
+    }
+    .cardA img{
+      width: 40rem;
+      height: 25rem;
+    }
+  }
+  
+</style>
+
+<div class="container">
+{% for post in posts %}
+   
+
+  {% if post.image %}
+  <div class="cardA">
+    <div style="margin-top:10px ;">
+      <a href="{{post.image.url}}" style="margin-left: 690px;" download ><img src="{% static 'download.png' %}" style="width:40px;height:40px;border-radius: 0%;"></a> 
+      
+      <!-- <a href=""><img src="" style="width:40px;height:40px;border-radius: 0%;"></a> -->
+    </div>
+    <div class="newfeeds" style="margin-left:60px;margin-top: 0px;">    
+      
+      
+  <a href="/dashboard/{{post.user}}">
+       <strong>@{{post.user}}</strong></a> &nbsp; &nbsp; 
+       {{post.created_at}}
+     <br>
+      
+        
+            <img src ="{{ post.image.url }}" alt="{{x.image}}" >
+            <p>{{post.caption}}</p>
+            <a href="/like?post_id={{post.id}}">
+            {% if post.no_of_likes == 0 %} 
+            <p><i class="fa-regular fa-heart heart" style="font-size:30px;color: brown;"></i>{{post.no_of_likes}}</p>
+            
+            {% elif post.no_of_likes == 1 %}
+            <p><i class="fa-solid fa-heart" style="font-size:30px;color: brown;"></i>
+            {{post.no_of_likes}}</p>
+            {% else %} 
+            <p><i class="fa-solid fa-heart" style="font-size:30px;color: brown;"></i>
+            {{post.no_of_likes}}</p>
+            {% endif %}
+          </a>
+      
+    </div>     
+  </div>
+   {% else %} 
+   <div class="cardB">
+    <div class="newfeeds" style="margin-left:60px;margin-top: 40px;">    
+    <a href="/dashboard/{{post.user}}">
+      <strong>@{{post.user}}</strong></a> &nbsp; &nbsp; 
+      {{post.created_at}}
+      <!-- <a href="/delete/{{post.id}}/" style="margin-left: 650px;"><img src="{% static 'delete.png' %}" style="width:40px;height:40px;border-radius: 0%;"></a> -->
+    <br>
+     
+       
+           <p style="margin-top:10px;margin-left:80px;">{{post.caption}}</p>
+           <a href="/like?post_id={{post.id}}">
+           {% if post.no_of_likes == 0 %} 
+           <p><i class="fa-regular fa-heart heart" style="font-size:30px;color: brown;margin-left: 20px;"></i>{{post.no_of_likes}}</p>
+           
+           {% elif post.no_of_likes == 1 %}
+           <p><i class="fa-solid fa-heart" style="font-size:30px;color: brown;margin-left: 20px;"></i>
+           {{post.no_of_likes}}</p>
+           {% else %} 
+           <p><i class="fa-solid fa-heart" style="font-size:30px;color: brown;margin-left: 20px;"></i>
+           {{post.no_of_likes}}</p>
+           {% endif %}
+         </a>
+   </div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+{% endblock %}
+      
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

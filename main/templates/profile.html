@@ -1,0 +1,46 @@
+{% extends 'page.html' %}
+{% load static %}
+{% block content %}  
+<div class="bg-white rounded-md lg:shadow-lg shadow col-span-2" style="margin-left: 230px;width: 800px;margin-top: 40px;">
+    <form action="" method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+    <div>
+
+         <div class="col-span-2">
+             <label for=""> Profile Image</label>
+             <img width="200" height="210" src="{{user_profile.image.url}}">
+             <input type="file" name="image" value="" class="shadow-none bg-gray-100">
+         </div>
+         <div class="form-control" style="width:400px ;">
+             <label for="about">About me</label>  
+             <textarea id="about" name="bio" rows="3"  class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
+         </div> 
+         <div class="form-control" style="width:400px ;">
+             <label for=""> Location</label>
+             <input type="text" name="location" placeholder="" value="{{user_profile.location}}" class="shadow-none bg-gray-100" style="width:300px ;">
+         </div>
+         <div class="form-control" style="width:400px ;">
+            <label for="Work at" name="job" > Working at</label>
+            <input type="text" placeholder="" class="shadow-none bg-gray-100">
+         </div> 
+         <div class="form-control" style="width:400px ;">
+            <label for=""> Relationship </label>
+            <select id="relationship" name="relationship"  class="shadow-none bg-gray-100">
+             <option value="0">None</option>
+             <option value="1">Single</option>
+             <option value="2">In a relationship</option>
+             <option value="3">Married</option>
+             <option value="4">Engaged</option>
+             
+           </select>
+         </div>
+    </div> 
+
+    <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+        <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> Cancel </button>
+        <button type="submit" class="button bg-blue-700"> Save </button>
+    </div>
+
+ </div>
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'owner.html' %} 
+{% load static %}
+
+{% block content %} 
+<style>
+    .mycontact{
+        margin-top: 50px;
+    }
+</style>
+<div class="mycontact" style="margin-left: 300px;">
+    <h1>Hello world</h1>
+</div>
+<div class="card">
+    <div class="content">
+        <h2>Yati Htun</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est illum suscipit ipsum nobis nam earum pariatur necessitatibus omnis, eaque distinctio exercitationem? Adipisci similique explicabo illo, tempora culpa soluta nostrum beatae.</p>
+        <a href="#">Read More</a>
+    </div>
+    
+    <img class="img" src="{% static 'yatiT.png' %}">
+</div>
+<br>
+{% endblock %}

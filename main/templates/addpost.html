@@ -1,0 +1,26 @@
+{% extends 'page.html' %} 
+{% load static %}
+{% block content %} 
+<h1>Alert!</h1>
+<li>Currently!U have to add your photos. If you upload status without adding photo, you will get error.Sorry for inconvenience. I will fix it later...  </li>
+<form action="" method="post" enctype="multipart/form-data" class="post">
+    
+    {% csrf_token %} 
+    <div>
+        <input type="file" name="image_upload"><br>
+        <textarea class="" name="caption" placeholder="Your Caption...."></textarea>
+        <br>
+        <button class="" type="submit">Upload</button>
+    </div>
+    
+</form>
+<!-- <form action="" method="post" enctype="multipart/form-data" class="post">
+    {% csrf_token %} 
+    <div>
+       
+        <textarea  placeholder="Your status....." type="text" name="text"></textarea>
+        <button class="" type="submit">Upload</button>
+    </div>
+</form> -->
+
+{% endblock %}

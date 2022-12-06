@@ -1,0 +1,13 @@
+{% extends 'page.html' %} 
+
+{% block content %} 
+
+{% for x in accounts %} 
+
+<!-- <a href="{% url 'dashboard' user.username %}"><li>{{account.username}}</li></a> -->
+<a href="/dashboard/{{x.username}}"><li>{{x.username}}</li></a>
+
+{% endfor %}
+
+
+{% endblock %}
